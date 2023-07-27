@@ -37,6 +37,13 @@ def evaluate_model(x_train,y_train,x_test,y_test,models,params):
 
             report[list(models.keys())[i]]=test_model_score
         return report
-
+    
+    except Exception as ex:
+        raise Custom_Exception(ex,sys)
+    
+def load_obj(filepath):
+    try:
+        with open(filepath,'rb') as file_obj:
+            return dill.load(file_obj)
     except Exception as ex:
         raise Custom_Exception(ex,sys)
